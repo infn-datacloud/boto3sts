@@ -1,4 +1,9 @@
 This is a simple library to obtain an AWS STS refreshable credential using an OIDC provider as the source of throught for the AssumeRoleWithWebIdentity AWS AuthN flow.
+
+## Requirements
+
+- oidc-agent >= 4.0.x
+  - with your oidc provider registered (e.g. INFN-Cloud IAM instance)
 ## Install
 
 ```bash
