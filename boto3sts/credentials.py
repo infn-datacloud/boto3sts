@@ -13,6 +13,7 @@ def assumed_session(oidc_profile, session=None):
     With automatic credential renewal.
 
     Args:
+      oidc_profile: the name of the oidc-agent profile to be used for the identity provider
       session: an optional extant session, note session is captured
                in a function closure for renewing the sts assumed role.
 
