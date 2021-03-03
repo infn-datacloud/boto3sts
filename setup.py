@@ -4,13 +4,13 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="boto3_sts",
+    name="boto3sts",
     version="0.0.1",
     author="dciangot",
     author_email="diego.ciangottini@gmail.com",
     description="It's boto3 STS refresh function.",
     long_description=long_description,
-    url="https://github.com/dodas-ts/boto3_sts",
+    url="https://github.com/dodas-ts/boto3sts",
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
