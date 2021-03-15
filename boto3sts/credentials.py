@@ -6,7 +6,7 @@ import xmltodict
 import liboidcagent as agent
 from boto3 import Session
 
-def s3_session_credentials(oidc_profile):
+def s3_session_credentials(oidc_profile, verify=True):
     token = agent.get_access_token(oidc_profile, 60, "Example-Py-App")
     r = requests.post("https://minio.cloud.infn.it/",
                 data={
@@ -16,7 +16,7 @@ def s3_session_credentials(oidc_profile):
                     'WebIdentityToken': token,
                     'DurationSeconds': 9000
                 },
-                verify=True)
+                verify=verify)
 
     tree = xmltodict.parse(r.content)
 
