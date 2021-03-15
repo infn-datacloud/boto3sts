@@ -21,6 +21,7 @@ setuptools.setup(
     'boto3',
     'requests',
     'xmltodict',
-    'liboidcagent'
+    'liboidcagent',
+    'future'
    ]
 )
