@@ -3,7 +3,7 @@ from botocore.exceptions import ClientError
 
 def presigned_urls(s3_client, bucket, objects, expiration=3600):
 
-    url = []
+    urls = []
 
     for obj in objects:
         try:
@@ -15,6 +15,6 @@ def presigned_urls(s3_client, bucket, objects, expiration=3600):
             print(e)
             return None
 
-        url.append(response)
+        urls.append(response)
 
     return urls
