@@ -67,3 +67,7 @@ presigned_urls = utils.presigned_urls(s3, "ciangottini", objects)
 ```
 
 Then, for instance, you can pass this urls to a distributed system, without the need to distribute any credential.
+
+```bash
+curl -XGET {{my_presigned_url}} > /tmp/myfile.txt
+```
