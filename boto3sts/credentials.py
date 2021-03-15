@@ -6,9 +6,9 @@ import xmltodict
 import liboidcagent as agent
 from boto3 import Session
 
-def s3_session_credentials(oidc_profile, verify=True):
+def s3_session_credentials(oidc_profile, endpoint="https://minio.cloud.infn.it/", verify=True):
     token = agent.get_access_token(oidc_profile, 60, "Example-Py-App")
-    r = requests.post("https://minio.cloud.infn.it/",
+    r = requests.post(endpoint,
                 data={
                     'Action':
                     "AssumeRoleWithWebIdentity",
