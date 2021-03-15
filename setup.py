@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="boto3sts",
-    version="0.0.5",
+    version="0.0.6",
     author="dciangot",
     author_email="diego.ciangottini@gmail.com",
     description="It's boto3 STS refresh function.",
