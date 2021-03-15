@@ -37,6 +37,7 @@ Then you can, for instance, read a csv via pandas adding the following lines:
 
 ```python
 import io
+import pandas as pd
 obj = s3.get_object(Bucket='bybucket', Key='test/mycsv.csv')
 df = pd.read_csv(io.BytesIO(obj['Body'].read()))
 ```
