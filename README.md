@@ -90,9 +90,13 @@ if this succeed and you still find this error, please feel free to file a issue.
 ```bash
 oidc-keychain
 ```
-if you obtain a valid response, a simple `eval \`oidc-keychain\`` should solve the error. After that you can quicly check that everything is ok by re-trying to get a valid token from cli with `oidc-token <profile name you choose, e.g. infncloud>`. If now you get a "Account not loaded" error, this means that the oidc-agent has been recently restarted (e.g. a reboot of the system) and you should go to the next point.
+if you obtain a valid response, a simple 
+```
+eval `oidc-keychain`
+``` 
+should solve the error. After that you can quicly check that everything is ok by re-trying to get a valid token from cli with `oidc-token <profile name you choose, e.g. infncloud>`. If now you get a "Account not loaded" error, this means that the oidc-agent has been recently restarted (e.g. a reboot of the system) and you should go to the next point.
 3. refresh your authorization for your oidc profile.
 ```bash
 oidc-gen --reauthenticate --flow device <profile name you choose, e.g. infncloud>
 ```
-aat this point if this fails or it succeeds and you still get the error running boto3sts please feel free to file a issue.
+at this point if this fails or it succeeds and you still get the error running boto3sts please feel free to file a issue.
