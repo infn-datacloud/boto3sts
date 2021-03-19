@@ -74,3 +74,25 @@ Then, for instance, you can pass this urls to a distributed system, without the 
 ```bash
 curl -XGET {{my_presigned_url}} > /tmp/myfile.txt
 ```
+
+## F.A.Q.
+
+### OidcAgentConnectError: OIDC_REMOTE_SOCK env var not set
+
+This error means that oidc-agent is not properly configured. Please note that the following steps should be done to get a proper environment set by the oidc-agent:
+
+1. check if you can retrieve a valid token with
+```bash
+oidc-token <profile name you choose, e.g. infncloud>
+```
+if this succeed and you still find this error, please feel free to file a issue. Otherwise go to the next point.
+2. try the following:
+```bash
+oidc-keychain
+```
+if you obtain a valid response, a simple `eval \`oidc-keychain\`` should solve the error. After that you can quicly check that everything is ok by re-trying to get a valid token from cli with `oidc-token <profile name you choose, e.g. infncloud>`. If now you get a "Account not loaded" error, this means that the oidc-agent has been recently restarted (e.g. a reboot of the system) and you should go to the next point.
+3. refresh your authorization for your oidc profile.
+```bash
+oidc-gen --reauthenticate --flow device <profile name you choose, e.g. infncloud>
+```
+aat this point if this fails or it succeeds and you still get the error running boto3sts please feel free to file a issue.
