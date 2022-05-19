@@ -6,8 +6,20 @@ import xmltodict
 import liboidcagent as agent
 from boto3 import Session
 
-def s3_session_credentials(oidc_profile, endpoint="https://minio.cloud.infn.it/", verify=True):
-    token = agent.get_access_token(oidc_profile, 60, "Example-Py-App")
+def s3_session_credentials(oidc_profile, endpoint="https://minio.cloud.infn.it/", verify=True, audience=None):
+    if not audience:
+        token = agent.get_access_token(
+            oidc_profile,
+            min_valid_period=60,
+            application_hint="boto3sts"
+        )
+    else:
+        token = agent.get_access_token(
+            oidc_profile,
+            min_valid_period=60,
+            application_hint="boto3sts",
+            audience=audience
+        )
     r = requests.post(endpoint,
                 data={
                     'Action':
