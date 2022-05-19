@@ -43,7 +43,7 @@ def s3_session_credentials(oidc_profile, endpoint="https://minio.cloud.infn.it/"
         expiry_time=credentials['Expiration'])
 
 
-def assumed_session(oidc_profile, endpoint="https://minio.cloud.infn.it/", verify=True, session=None):
+def assumed_session(oidc_profile, endpoint="https://minio.cloud.infn.it/", verify=True, session=None, audience=None):
     """STS Role assume a boto3.Session
 
     With automatic credential renewal.
@@ -59,7 +59,7 @@ def assumed_session(oidc_profile, endpoint="https://minio.cloud.infn.it/", verif
         session = Session()
 
     def refresh():
-        creds = s3_session_credentials(oidc_profile, endpoint=endpoint, verify=verify)
+        creds = s3_session_credentials(oidc_profile, endpoint=endpoint, verify=verify, audience=audience)
         return creds
 
     session_credentials = RefreshableCredentials.create_from_metadata(
