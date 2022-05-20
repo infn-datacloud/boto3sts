@@ -54,7 +54,7 @@ from boto3sts import credentials as creds
 from boto3sts import utils
 
 # possible options are: creds.assumed_session("dodas_oidc-agen-profile", endpoint="https://minio.cloud.infn.it/", verify=True)
-aws_session = creds.assumed_session("dodas_oidc-agen-profile")
+aws_session = creds.assumed_session("dodas_oidc-agen-profile", duration_s=10000)
 
 s3 = aws_session.client('s3', endpoint_url="https://minio.cloud.infn.it/", config=boto3.session.Config(signature_version='s3v4'),
                                                 verify=True)
