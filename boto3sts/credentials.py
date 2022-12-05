@@ -30,9 +30,13 @@ def s3_session_credentials(oidc_profile, endpoint="https://minio.cloud.infn.it/"
                 verify=verify)
 
     tree = xmltodict.parse(r.content)
-
-    credentials = dict(tree['AssumeRoleWithWebIdentityResponse']
+    
+    try:
+        credentials = dict(tree['AssumeRoleWithWebIdentityResponse']
                 ['AssumeRoleWithWebIdentityResult']['Credentials'])
+    except Exception as ex:
+        print(tree)
+        raise ex
 
     return dict(
         access_key=credentials['AccessKeyId'],
