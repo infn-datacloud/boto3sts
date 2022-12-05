@@ -36,6 +36,7 @@ def s3_session_credentials(oidc_profile, endpoint="https://minio.cloud.infn.it/"
                 ['AssumeRoleWithWebIdentityResult']['Credentials'])
     except Exception as ex:
         print(tree)
+        print("Token: ", token) 
         raise ex
 
     return dict(
