@@ -16,9 +16,9 @@ import boto3
 from boto3sts import credentials as creds
 from boto3sts import utils
 
-aws_session = creds.assumed_session("dodas_oidc-agen-profile",  endpoint="https://minio.cloud.infn.it/", verify=True)
+aws_session = creds.assumed_session("dodas_oidc-agen-profile",  endpoint="https://rgw.cloud.infn.it/", verify=True)
 
-s3 = aws_session.client('s3', endpoint_url="https://minio.cloud.infn.it/", config=boto3.session.Config(signature_version='s3v4'),
+s3 = aws_session.client('s3', endpoint_url="https://rgw.cloud.infn.it/", config=boto3.session.Config(signature_version='s3v4'),
                                                 verify=True)
 
 objects = []

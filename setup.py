@@ -10,7 +10,7 @@ setuptools.setup(
     author_email="diego.ciangottini@gmail.com",
     description="It's boto3 STS refresh function.",
     long_description=long_description,
-    url="https://github.com/dodas-ts/boto3sts",
+    url="https://github.com/infn-datacloud/boto3sts",
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",

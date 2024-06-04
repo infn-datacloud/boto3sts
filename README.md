@@ -14,7 +14,7 @@ docker run -v $OIDC_SOCK:$OIDC_SOCK <your image>
 ## Install
 
 ```bash
-pip3 install -U git+https://git@github.com/dodas-ts/boto3sts
+pip3 install -U git+https://git@github.com/infn-datacloud/boto3sts
 ```
 
 ## Example code
@@ -25,11 +25,11 @@ from boto3sts import credentials as creds
 
 # Get your refreshble credentials session with the oidc-agent profile named e.g.: dodas_oidc-agen-profile
 # possible options are:
-# creds.assumed_session("dodas_oidc-agen-profile", endpoint="https://minio.cloud.infn.it/", verify=True)
+# creds.assumed_session("dodas_oidc-agen-profile", endpoint="https://rgw.cloud.infn.it/", verify=True)
 aws_session = creds.assumed_session("dodas_oidc-agen-profile")
 
 # Use the generated session for all the data operations on an s3 bucket
-s3 = aws_session.client('s3', endpoint_url="https://minio.cloud.infn.it/", config=boto3.session.Config(signature_version='s3v4'),
+s3 = aws_session.client('s3', endpoint_url="https://rgw.cloud.infn.it/", config=boto3.session.Config(signature_version='s3v4'),
                                                 verify=True)
 for key in s3.list_objects(Bucket='ciangottini')['Contents']:
         print(key['Key'])
@@ -53,10 +53,10 @@ import boto3
 from boto3sts import credentials as creds
 from boto3sts import utils
 
-# possible options are: creds.assumed_session("dodas_oidc-agen-profile", endpoint="https://minio.cloud.infn.it/", verify=True)
+# possible options are: creds.assumed_session("dodas_oidc-agen-profile", endpoint="https://rgw.cloud.infn.it/", verify=True)
 aws_session = creds.assumed_session("dodas_oidc-agen-profile", duration_s=10000)
 
-s3 = aws_session.client('s3', endpoint_url="https://minio.cloud.infn.it/", config=boto3.session.Config(signature_version='s3v4'),
+s3 = aws_session.client('s3', endpoint_url="https://rgw.cloud.infn.it/", config=boto3.session.Config(signature_version='s3v4'),
                                                 verify=True)
 
 objects = []
